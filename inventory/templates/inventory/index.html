@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<table class="table table-striped table-hover">
+    <thead>
+        <th>地点</th>
+        <th>配件</th>
+    </thead>
+    <tbody>
+    {% for position in objects %}
+    <tr>
+        <td>
+            {{ position.position_title }}
+        </td>
+        <td>
+            <ul>
+            {% for stock_out in position.out_set.all %}
+            <li>{{ stock_out.item }}: {{ stock_out.quantities }}个</li>
+            {% endfor %}
+            </ul>
+
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+
+
+
+
+{% endblock %}
